@@ -25,9 +25,9 @@ class MyApp extends StatelessWidget {
         routes: {
           Rotas.HOME_SCREEN: (context) => HomeScreen(),
           Rotas.HOME_SCREEN_FULL: (context) => HomeScreen(),
-          Rotas.VOOS_SCREEN: (context) => VoosScreen(),
-          Rotas.AEROPORTOS_SCREEN: (context) => AeroportosScreen(),
-          Rotas.DETALHESVOO_SCREEN: (context) => DetalhesVooScreen(),
+          //Rotas.VOOS_SCREEN: (context) => VoosScreen(),
+          //Rotas.AEROPORTOS_SCREEN: (context) => AeroportosScreen(),
+          //Rotas.DETALHESVOO_SCREEN: (context) => DetalhesVooScreen(),
         });
   }
 }

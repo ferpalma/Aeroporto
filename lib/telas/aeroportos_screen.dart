@@ -6,14 +6,20 @@ import 'package:flutter/material.dart';
 
 class AeroportosScreen extends StatelessWidget {
   AeroportosMock mock = AeroportosMock();
-  late String? cidade;
-  late String? estado;
+  late List<Aeroporto> aeroporto;
+  late String cidade;
+  late String estado;
 
-  AeroportosScreen({Key? key, this.cidade, this.estado}) : super(key: key);
-  late List<Aeroporto?> aeroportos =
-      mock.infra.getAeroportoPorCidadeEstado(cidade, estado);
+  AeroportosScreen(
+      {Key? key,
+      required this.cidade,
+      required this.estado,
+      required this.aeroporto})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    print(this.aeroporto);
     //mock.carregaAeroportos();
 
     final dw = MediaQuery.of(context).size.width / 100;
@@ -34,16 +40,18 @@ class AeroportosScreen extends StatelessWidget {
                     Text(
                       'CIDADE: $cidade',
                       style: TextStyle(
-                        fontSize: dw * 3,
+                        fontSize: dw * 4,
                         color: Colors.blue,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     Padding(padding: EdgeInsets.only(right: 100)),
                     Text(
                       'ESTADO: $estado',
                       style: TextStyle(
-                        fontSize: dw * 3,
+                        fontSize: dw * 4,
                         color: Colors.blue,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
@@ -51,31 +59,26 @@ class AeroportosScreen extends StatelessWidget {
               ),
             ),
             Container(
-              child: Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: aeroportos.length,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          title: Text(aeroportos[index]!.getNome),
-                          subtitle: Text(aeroportos[index]!.getPais),
-                          onTap: () {
-                            print('Aeroportos $index selecionada');
-                            //dar pushNemed para próxima tela
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: aeroporto.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(aeroporto[index].getNome),
+                      subtitle: Text(aeroporto[index].getPais),
+                      onTap: () {
+                        print('Aeroportos $index selecionada');
+                        //dar pushNemed para próxima tela
 
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => VoosScreen(
-                                          aeroporto: aeroportos[index]!.getNome,
-                                        )));
-                          },
-                        );
-                      }),
-                ),
-              ),
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => VoosScreen(
+                                      aeroporto: aeroporto[index],
+                                    )));
+                      },
+                    );
+                  }),
             ),
           ],
         ),

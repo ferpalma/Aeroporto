@@ -27,8 +27,8 @@ class Aeroporto {
     return voo;
   }
 
-  Voo? getVoosPorNumero(int numero) {
-    Voo? voo;
+  Voo getVoosPorNumero(int numero) {
+    late Voo voo;
     for (int i = 0; i < getVoos.length; i++) {
       if (getVoos[i].getNumeroVoo == numero) {
         voo = getVoos[i];

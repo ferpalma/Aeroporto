@@ -8,7 +8,7 @@ class Infraero {
   List<Aeroporto> historicoAeroporto = [];
   List<Voo> vetVoos = [];
 
-  List<Aeroporto?> getAeroportoPorCidadeEstado(String? cidade, String? estado) {
+  List<Aeroporto> getAeroportoPorCidadeEstado(String? cidade, String? estado) {
     AeroportosMock mock = AeroportosMock();
     mock.carregaAeroportos();
     for (int i = 0; i < mock.infra.getAeroportos.length; i++) {
@@ -17,6 +17,8 @@ class Infraero {
         vetAeroportos.add(mock.infra.getAeroportos[i]);
       }
     }
+    print('Vetaeroprotos');
+    print(vetAeroportos);
     return vetAeroportos;
   }
 
